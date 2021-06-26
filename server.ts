@@ -7,7 +7,7 @@ import {fileRouter} from './src/routes';
 const app = express();
 app.use(json());
 
-// app.use(express.static("uploads"));
+app.use(express.static("public"));
 //app routes
 app.use('/api/file', fileRouter);
 
