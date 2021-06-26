@@ -5,8 +5,8 @@ import {fileFilter} from '../utility/utility';
 
 const router = express.Router();
 const upload = multer({ dest: 'uploads/', fileFilter });
-// upload.single('fileData')
+
 router.get('/', GetFiles)
-router.post('/', NewFile)
+router.post('/', upload.single('fileData'), NewFile)
 
 export {router as fileRouter};

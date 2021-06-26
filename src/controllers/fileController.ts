@@ -9,20 +9,24 @@ const GetFiles = async (req: Request, res: Response) => {
 }
 
 const NewFile = async (req: Request, res: Response) => {
-    const frame_path = path.join(__dirname, '../../public/imgs/gold-frame.png');
-    const image_path = path.join(__dirname, '../../public/imgs/test1.jpeg');
-    const output_path = path.join(__dirname, '../../public/imgs/final.png');
+    if (req.file) {
+        const frame_path = path.join(__dirname, '../../public/imgs/gold-frame.png');
+        const image_path = req.file.path;
+        const output_path = path.join(__dirname, '../../public/imgs/final.png');
 
-    const frame_canvas = images(frame_path);
-    const image_canvas = images(image_path);
+        const frame_canvas = images(frame_path);
+        const image_canvas = images(image_path);
 
-    image_canvas
-        .size(400)
-        .draw(frame_canvas.size(400, image_canvas.height()), 0, 0)
-        .save(output_path, {
-            quality: 50
-        });
-    res.send('successful');
+        image_canvas
+            .size(400)
+            .draw(frame_canvas.size(400, image_canvas.height()), 0, 0)
+            .save(output_path, {
+                quality: 50
+            });
+        return res.send('successful');
+    }
+    // throw new Error("File not found, please input a valid file type")
+    return res.status(500).send('File not found, please input a valid file type');
 }
 
 export {
