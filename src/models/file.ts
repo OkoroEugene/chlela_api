@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import {IFile} from '../interface/file'
 
 const fileSchema = new mongoose.Schema({
     original_file: {
@@ -13,4 +14,4 @@ const fileSchema = new mongoose.Schema({
 
 const File = mongoose.model('File', fileSchema);
 
-export { File };
+export {File};
