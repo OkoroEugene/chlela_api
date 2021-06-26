@@ -1,5 +1,5 @@
-import {postRouter} from './post';
+import {fileRouter} from './file';
 
 export {
-    postRouter,
+    fileRouter,
 }
