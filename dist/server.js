@@ -7,6 +7,7 @@ var express_1 = __importDefault(require("express"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var body_parser_1 = require("body-parser");
 var routes_1 = require("./src/routes");
+require('dotenv').config();
 var PORT = process.env.PORT || 5000;
 var app = express_1.default();
 app.use(body_parser_1.json());
@@ -15,7 +16,9 @@ app.use(express_1.default.static("dist/public"));
 app.use('/api/file', routes_1.fileRouter);
 app.get('/', function (req, res) { return res.send('Welcome to chlela!'); });
 //connect to DB
-mongoose_1.default.connect('mongodb://localhost:27017/chlela', {
+var uri = process.env.NODE_ENV === 'prod' ?
+    process.env.DB_URI_PROD : process.env.DB_URI_PROD;
+mongoose_1.default.connect(uri || 'mongodb://localhost:27017/chlela', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true

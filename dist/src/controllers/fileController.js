@@ -58,10 +58,6 @@ var NewFile = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
                 path = req.file.path;
                 output = fileService_1.default(path);
                 if (!output) return [3 /*break*/, 2];
-                console.log({
-                    original_file: path,
-                    framed_file: output,
-                });
                 file = new file_1.default({
                     original_file: path,
                     framed_file: output,

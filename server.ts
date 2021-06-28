@@ -1,7 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import {json} from 'body-parser';
+import { json } from 'body-parser';
 import { fileRouter } from './src/routes';
+
+require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,7 +17,10 @@ app.use('/api/file', fileRouter);
 app.get('/', (req, res) => res.send('Welcome to chlela!'));
 
 //connect to DB
-mongoose.connect('mongodb://localhost:27017/chlela', {
+const uri = process.env.NODE_ENV === 'prod' ?
+    process.env.DB_URI_PROD : process.env.DB_URI_PROD;
+
+mongoose.connect(uri || 'mongodb://localhost:27017/chlela', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
