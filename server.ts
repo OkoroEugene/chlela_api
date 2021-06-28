@@ -1,9 +1,8 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import {json} from 'body-parser';
-import path from 'path';
 import { fileRouter } from './src/routes';
-import fs from 'fs';
+
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(json());
@@ -19,4 +18,4 @@ process.on('uncaughtException', (err: any, origin: any) => {
     console.log("Node NOT Exiting...");
 });
 
-app.listen(5000, () => console.log('Server is connected at 5000'));
+app.listen(PORT, () => console.log('Server is connected at 5000'));
