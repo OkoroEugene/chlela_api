@@ -4,7 +4,8 @@
   "description": "A web api for chlela mobile ecommerce app",
   "main": "server.ts",
   "scripts": {
-    "start": "ts-node-dev server.ts",
+    "start": "tsc && node dist/server.js",
+    "dev": "ts-node-dev server.ts",
     "watch": "nodemon --exec ts-node -- server.ts",
     "test": "jest"
   },
@@ -23,8 +24,7 @@
     "images": "^3.2.3",
     "mongoose": "^5.12.15",
     "multer": "^1.4.2",
-    "path": "^0.12.7",
-    "ts-jest": "^27.0.3"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
@@ -32,6 +32,7 @@
     "@types/jest": "^26.0.23",
     "@types/multer": "^1.4.6",
     "jest": "^27.0.5",
+    "ts-jest": "^27.0.3",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.4"
   }

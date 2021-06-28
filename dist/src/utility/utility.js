@@ -1,5 +1,7 @@
-
-const fileFilter = function (req:any, file:any, cb:any) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fileFilter = void 0;
+var fileFilter = function (req, file, cb) {
     // Accept images only
     if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|heic|HEIC)$/)) {
         req.fileValidationError = 'Only image files are allowed!';
@@ -7,5 +9,4 @@ const fileFilter = function (req:any, file:any, cb:any) {
     }
     cb(null, true);
 };
-
-export {fileFilter};
+exports.fileFilter = fileFilter;
