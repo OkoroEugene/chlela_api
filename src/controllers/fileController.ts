@@ -14,7 +14,7 @@ const NewFile = async (req: Request, res: Response) => {
             return res
                 .send({
                     data: output,
-                    message: 'successssfully framed image'
+                    message: 'successfully framed image'
                 });
         }
         return res

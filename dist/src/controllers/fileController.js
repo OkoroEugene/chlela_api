@@ -58,7 +58,7 @@ var NewFile = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
                 return [2 /*return*/, res
                         .send({
                         data: output,
-                        message: 'successssfully framed image'
+                        message: 'successfully framed image'
                     })];
             }
             return [2 /*return*/, res
