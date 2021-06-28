@@ -12,12 +12,7 @@ app.use(express.static("public"));
 //app routes
 app.use('/api/file', fileRouter);
 
-//connect to DB
-mongoose.connect('mongodb://localhost:27017/chlela', {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, () => console.log('Connected to the database'))
+app.get('/', (req, res) => res.send('Welcome to chlela!'));
 
 process.on('uncaughtException', (err: any, origin: any) => {
     console.error(err);
