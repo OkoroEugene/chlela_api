@@ -19,7 +19,7 @@ function GenerateFile(image_path: string) {
             });
 
         return main_path;
-        
+
     } catch (error) {
         return null;
     }
