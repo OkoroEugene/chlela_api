@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(json());
 
-app.use(express.static("public"));
+app.use(express.static("dist/public"));
 //app routes
 app.use('/api/file', fileRouter);
 

@@ -55,11 +55,19 @@ var NewFile = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
             path = req.file.path;
             output = fileService_1.default(path);
             if (output) {
-                return [2 /*return*/, res.send({ data: output, message: 'successfully framed image' })];
+                return [2 /*return*/, res
+                        .send({
+                        data: output,
+                        message: 'successssfully framed image'
+                    })];
             }
+            return [2 /*return*/, res
+                    .status(500)
+                    .send('Something went wrong, please contact admin')];
         }
-        // throw new Error("File not found, please input a valid file type")
-        return [2 /*return*/, res.status(500).send('File not found, please input a valid file type')];
+        return [2 /*return*/, res
+                .status(500)
+                .send('File not found, please input a valid file type')];
     });
 }); };
 exports.NewFile = NewFile;

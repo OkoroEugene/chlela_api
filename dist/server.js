@@ -9,7 +9,7 @@ var routes_1 = require("./src/routes");
 var PORT = process.env.PORT || 5000;
 var app = express_1.default();
 app.use(body_parser_1.json());
-app.use(express_1.default.static("public"));
+app.use(express_1.default.static("dist/public"));
 //app routes
 app.use('/api/file', routes_1.fileRouter);
 app.get('/', function (req, res) { return res.send('Welcome to chlela!'); });

@@ -7,15 +7,23 @@ const GetFiles = async (req: Request, res: Response) => {
 
 const NewFile = async (req: Request, res: Response) => {
     if (req.file) {
-        const {path} = req.file;
+        const { path } = req.file;
 
         const output = GenerateFile(path);
         if (output) {
-            return res.send({data: output, message: 'successfully framed image'});
+            return res
+                .send({
+                    data: output,
+                    message: 'successssfully framed image'
+                });
         }
+        return res
+            .status(500)
+            .send('Something went wrong, please contact admin');
     }
-    // throw new Error("File not found, please input a valid file type")
-    return res.status(500).send('File not found, please input a valid file type');
+    return res
+        .status(500)
+        .send('File not found, please input a valid file type');
 }
 
 export {

@@ -17,7 +17,9 @@ function GenerateFile(image_path: string) {
             .save(output_path, {
                 quality: 50
             });
+
         return main_path;
+        
     } catch (error) {
         return null;
     }
