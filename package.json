@@ -4,7 +4,9 @@
   "description": "A web api for chlela mobile ecommerce app",
   "main": "server.ts",
   "scripts": {
-    "start": "ts-node-dev server.ts"
+    "start": "ts-node-dev server.ts",
+    "watch": "nodemon --exec ts-node -- server.ts",
+    "test": "jest"
   },
   "keywords": [
     "chlela",
@@ -14,18 +16,22 @@
   "author": "Obinna Okoro",
   "license": "ISC",
   "dependencies": {
+    "babel-jest": "^27.0.5",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "images": "^3.2.3",
-    "jimp": "^0.16.1",
     "mongoose": "^5.12.15",
     "multer": "^1.4.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "ts-jest": "^27.0.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
     "@types/express": "^4.17.12",
+    "@types/jest": "^26.0.23",
     "@types/multer": "^1.4.6",
+    "jest": "^27.0.5",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.4"
   }
