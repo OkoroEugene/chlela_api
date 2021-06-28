@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import GenerateFile from '../services/fileService';
+import File from '../model/file';
 
 const GetFiles = async (req: Request, res: Response) => {
     res.send('Got files!');
@@ -11,6 +12,13 @@ const NewFile = async (req: Request, res: Response) => {
 
         const output = GenerateFile(path);
         if (output) {
+            const file = new File({
+                original_file: path,
+                framed_file: output,
+            })
+
+            await file.save();
+
             return res
                 .send({
                     data: output,

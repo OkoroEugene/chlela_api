@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NewFile = exports.GetFiles = void 0;
 var fileService_1 = __importDefault(require("../services/fileService"));
+var file_1 = __importDefault(require("../model/file"));
 var GetFiles = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send('Got files!');
@@ -49,25 +50,37 @@ var GetFiles = function (req, res) { return __awaiter(void 0, void 0, void 0, fu
 }); };
 exports.GetFiles = GetFiles;
 var NewFile = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var path, output;
+    var path, output, file;
     return __generator(this, function (_a) {
-        if (req.file) {
-            path = req.file.path;
-            output = fileService_1.default(path);
-            if (output) {
+        switch (_a.label) {
+            case 0:
+                if (!req.file) return [3 /*break*/, 3];
+                path = req.file.path;
+                output = fileService_1.default(path);
+                if (!output) return [3 /*break*/, 2];
+                console.log({
+                    original_file: path,
+                    framed_file: output,
+                });
+                file = new file_1.default({
+                    original_file: path,
+                    framed_file: output,
+                });
+                return [4 /*yield*/, file.save()];
+            case 1:
+                _a.sent();
                 return [2 /*return*/, res
                         .send({
                         data: output,
                         message: 'successfully framed image'
                     })];
-            }
-            return [2 /*return*/, res
+            case 2: return [2 /*return*/, res
                     .status(500)
                     .send('Something went wrong, please contact admin')];
+            case 3: return [2 /*return*/, res
+                    .status(500)
+                    .send('File not found, please input a valid file type')];
         }
-        return [2 /*return*/, res
-                .status(500)
-                .send('File not found, please input a valid file type')];
     });
 }); };
 exports.NewFile = NewFile;
