@@ -18,4 +18,4 @@ process.on('uncaughtException', (err: any, origin: any) => {
     console.log("Node NOT Exiting...");
 });
 
-app.listen(PORT, () => console.log('Server is connected at 5000'));
+app.listen(PORT, () => console.log(`Server is connected at ${PORT}`));
